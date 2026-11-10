@@ -1,6 +1,10 @@
 ---
 title: "Research"
 type: landing
+
+design:
+  spacing: "4rem"
+
 sections:
   - block: markdown
     id: research
@@ -35,4 +39,14 @@ sections:
         **Breaking barriers or reinforcing bias? Climate crises and the gender divide in political leadership**  
         _Kleinman Center Blog (2024)_  
         [Read it here](https://kleinmanenergy.upenn.edu/commentary/blog/insights-from-the-the-political-economy-of-climate-change-and-the-environment-2024-mini-conference/)
+
+  - block: markdown
+    id: typhoon-map-preview
+    content:
+      title: "Interactive Typhoon Exposure Map"
+      text: |-
+        <a href="/maps/typhoons/" aria-label="Open full-screen interactive typhoon exposure map" title="Open interactive map" style="display:block;max-width:1100px;margin:1rem auto;text-decoration:none">
+          <img src="/images/typhoon-map-preview.png" alt="Screenshot of the Philippines Storm Exposure Explorer. Click to open the full-screen interactive map." style="display:block;width:100%;height:auto;border-radius:12px;border:1px solid #d3dbe3;box-shadow:0 12px 32px rgba(0,0,0,.11)" loading="lazy">
+          <span style="display:block;font-weight:600;margin-top:.85rem">Open the full-screen interactive map ↗</span>
+        </a>
 ---

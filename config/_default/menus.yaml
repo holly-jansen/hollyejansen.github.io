@@ -1,27 +1,17 @@
-# Navigation Links
-#   To link a homepage widget, specify the URL as a hash `#` followed by the filename of the
-  #     desired widget in your `content/home/` folder.
-  #   The weight parameter defines the order that the links will appear in.
-
+# Each tab points to its own independent page.
 main:
-  - name: "Typhoon Exposure Map"
-    url: "/research/typhoon-wind-exposure/"
-    weight: 80
-
   - name: Bio
     url: /
     weight: 10
-  - name: CV
-    url: /#cv
-    weight: 11
   - name: Research
     url: /research/
-    weight: 12
+    weight: 20
   - name: Teaching
-    url: /#teaching
-    weight: 13
-
-
-
-
-
+    url: /teaching/
+    weight: 30
+  - name: CV
+    url: /cv/
+    weight: 40
+  - name: Typhoon Exposure Map
+    url: /maps/typhoons/
+    weight: 50
