@@ -1,26 +1,5 @@
-<style>
-  main h1,
-  main .article-title,
-  main .article-header,
-  main .article-metadata,
-  main .page-header,
-  main .page-title,
-  main article > header {
-    display: none !important;
-  }
-
-  .typhoon-map-embed {
-    width: 100%;
-    margin: 0;
-  }
-</style>
-
-<div class="typhoon-map-embed">
-  <iframe
-    src="{{ "maps/typhoons/" | relURL }}"
-    title="Interactive Philippine Typhoon Exposure Map"
-    style="display:block;width:100%;height:85vh;min-height:750px;border:0;border-radius:8px;"
-    loading="lazy"
-    allowfullscreen>
-  </iframe>
+<div class="typhoon-map-embed" style="width:100%;margin:1.5rem 0;">
+  <p><a href="{{ "maps/typhoons/" | relURL }}" target="_blank" rel="noopener">Open the interactive map full screen</a></p>
+  <iframe src="{{ "maps/typhoons/" | relURL }}" title="Philippines Typhoon Wind Exposure Explorer — corrected November 2026 release" loading="lazy" style="display:block;width:100%;min-height:760px;height:82vh;border:1px solid #dbe2ec;border-radius:12px;background:#f4f7fb;" allowfullscreen></iframe>
+  <p style="font-size:0.8rem;color:#52657a;">Corrected provisional municipality-by-storm wind reconstruction (1998–2019). All values are modeled and subject to validation. <a href="{{ "maps/typhoons/methodology.html" | relURL }}" target="_blank" rel="noopener">Methods, source documentation, and limitations</a>.</p>
 </div>

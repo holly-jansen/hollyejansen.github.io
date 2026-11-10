@@ -1,0 +1,80 @@
+{
+  "datafile": "PH_wind_1998_2019.csv.gz",
+  "source_sha256": "23d279e76e2621f7aa46cf8ca5846797b6f570ef5b21ffef75ec7eea17de5da7",
+  "rows": 860683,
+  "storms": 529,
+  "geographies": 1627,
+  "columns_in_master": 32,
+  "flagged_source_histories": 33823,
+  "complete_source_histories": 826860,
+  "metrics": {
+    "wind_squared_peak_kn2": {
+      "nonmissing": 860683,
+      "zero": 265736,
+      "missing": 0,
+      "maximum": 13365.7451171875
+    },
+    "peak_rms_wind_kn": {
+      "nonmissing": 860683,
+      "zero": 265736,
+      "missing": 0,
+      "maximum": 115.61031341552734
+    },
+    "wind_cubed_peak_kn3": {
+      "nonmissing": 860683,
+      "zero": 265736,
+      "missing": 0,
+      "maximum": 1545243.0
+    },
+    "wind_cumulative_squared_kn2_hours": {
+      "nonmissing": 860683,
+      "zero": 265736,
+      "missing": 0,
+      "maximum": 345541.3125
+    },
+    "wind_cumulative_cubed_kn3_hours": {
+      "nonmissing": 860683,
+      "zero": 265736,
+      "missing": 0,
+      "maximum": 23324010.0
+    },
+    "wind_squared_anomaly_prior5yr_difference_kn2": {
+      "nonmissing": 645305,
+      "zero": 0,
+      "missing": 215378,
+      "maximum": 13109.6552734375
+    },
+    "wind_squared_anomaly_prior5yr_z": {
+      "nonmissing": 645305,
+      "zero": 0,
+      "missing": 215378,
+      "maximum": 36.339515686035156
+    },
+    "wind_squared_peak_kn2_short_outer_tail": {
+      "nonmissing": 860683,
+      "zero": 378759,
+      "missing": 0,
+      "maximum": 13365.7451171875
+    },
+    "wind_squared_peak_kn2_long_outer_tail": {
+      "nonmissing": 860683,
+      "zero": 178258,
+      "missing": 0,
+      "maximum": 13365.7451171875
+    },
+    "wind_squared_peak_kn2_fixed2000": {
+      "nonmissing": 860683,
+      "zero": 265736,
+      "missing": 0,
+      "maximum": 13362.6845703125
+    },
+    "wind_squared_peak_kn2_800km_reference": {
+      "nonmissing": 858654,
+      "zero": 551660,
+      "missing": 2029,
+      "maximum": 13364.60546875
+    }
+  },
+  "rendered_html_bytes": 849035,
+  "metric_asset_total_bytes": 22521910
+}
