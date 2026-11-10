@@ -4,6 +4,10 @@
   #   The weight parameter defines the order that the links will appear in.
 
 main:
+  - name: "Typhoon Exposure Map"
+    url: "/research/typhoon-wind-exposure/"
+    weight: 80
+
   - name: Bio
     url: /
     weight: 10
