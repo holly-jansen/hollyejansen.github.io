@@ -1,35 +1,26 @@
 <style>
-/* Only the clickable screenshot is shown on the research page. */
-main h1,
-main .page-header,
-main .article-header,
-main .article-title,
-main .article-metadata,
-main article > header,
-main .page-title,
-main .breadcrumbs {
-  display: none !important;
-}
-.typhoon-preview-only {
-  width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-}
-.typhoon-preview-only a {
-  display: block;
-  text-decoration: none;
-  line-height: 0;
-}
-.typhoon-preview-only img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: 0;
-  border-radius: 8px;
-}
+  main h1,
+  main .article-title,
+  main .article-header,
+  main .article-metadata,
+  main .page-header,
+  main .page-title,
+  main article > header {
+    display: none !important;
+  }
+
+  .typhoon-map-embed {
+    width: 100%;
+    margin: 0;
+  }
 </style>
-<div class="typhoon-preview-only">
-  <a href="{{ "maps/typhoons/" | relURL }}" aria-label="Open interactive typhoon exposure map">
-    <img src="{{ "maps/typhoons/preview.png" | relURL }}" alt="Preview of the interactive Philippine typhoon wind exposure map" loading="eager" />
-  </a>
+
+<div class="typhoon-map-embed">
+  <iframe
+    src="{{ "maps/typhoons/" | relURL }}"
+    title="Interactive Philippine Typhoon Exposure Map"
+    style="display:block;width:100%;height:85vh;min-height:750px;border:0;border-radius:8px;"
+    loading="lazy"
+    allowfullscreen>
+  </iframe>
 </div>
