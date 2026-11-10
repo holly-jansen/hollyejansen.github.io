@@ -33,7 +33,7 @@ hr{border:0;border-top:1px solid var(--line);margin:4px 0}.meta{font-size:12px;c
   <div class="control-row"><label class="field">Year<select id="year"><option value="all">All years</option></select></label><label class="field">Storm<select id="storm"></select></label></div>
   <label class="field">Exposure measure<select id="metric"><option value="wind_squared_peak_kn2">Primary · Population-weighted wind²</option></select></label>
   <div class="buttons"><button class="btn main" id="play">▶ Play storms</button><button class="btn" id="prev">← Previous</button><button class="btn" id="next">Next →</button></div>
-  <div class="buttons"><button class="btn" id="jump">Jump to Haiyan</button><button class="btn" id="download">Export selected storm CSV ↓</button></div>
+  <div class="buttons"><button class="btn" id="jump">Jump to Haiyan</button></div>
   <label style="display:flex;gap:8px;align-items:center;font-size:12px"><input type="checkbox" id="tracktoggle" checked style="width:15px;height:15px"/>Show storm track (JMA/IBTrACS)</label>
   <hr/>
   <div id="storm-meta" class="meta">Loading storm information…</div>
@@ -87,7 +87,6 @@ function viewport(){ $('mapSvg').setAttribute('viewBox',`${focus.x} ${focus.y} $
 function zoom(scale,x,y){let minW=130,maxW=2200;let w=Math.max(minW,Math.min(maxW,focus.w/scale)),h=w*1.37;let cx=x??(focus.x+focus.w/2),cy=y??(focus.y+focus.h/2), fx=(cx-focus.x)/focus.w,fy=(cy-focus.y)/focus.h;focus={x:cx-fx*w,y:cy-fy*h,w,h};viewport()}
 function panreset(){focus={x:0,y:0,w:1000,h:1370};viewport()}
 function pixelToMap(clientX,clientY){const rect=$('mapSvg').getBoundingClientRect();const sx=(clientX-rect.left)/rect.width,sy=(clientY-rect.top)/rect.height;const r=rect.width/rect.height,vr=focus.w/focus.h;let u=sx,v=sy;if(r>vr){let visible=vr/r;u=(sx-(1-visible)/2)/visible}else{let visible=r/vr;v=(sy-(1-visible)/2)/visible}return {x:focus.x+u*focus.w,y:focus.y+v*focus.h}}
-function exportCSV(){let mlist=MLIST.map(m=>data[m]),header=['municipality_polygon_key','province','municipality','storm_id','storm_name','storm_start_date','wind_profile_status',...MLIST];let lines=[header.join(',')];let s=STORMS[current];const clean=x=>'"'+String(x??'').replaceAll('"','""')+'"';const names=['outside_model_domain_zero','complete','partial_lower_bound','unresolved'];for(let i=0;i<N;i++){let g=GEO[i],a=[g.k,g.p,g.n,s[0],s[1],s[2],names[statusAt(i)],...mlist.map(v=>{let x=v[current*N+i];return Number.isFinite(x)?x:''})];lines.push(a.map(clean).join(','))}let blob=new Blob([lines.join('\n')],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`PH_${s[4]}_${s[0]}_wind_exposure.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),5000)}
 async function init(){try{
  for(let i=0;i<MLIST.length;i++){$('loading-text').textContent=`Loading wind exposure measure ${i+1} of ${MLIST.length}…`;await new Promise(r=>setTimeout(r,0));data[MLIST[i]]=await decoded(ENCODED[MLIST[i]],'f32');if(data[MLIST[i]].length!==S*N)throw Error('Exposure array length mismatch')}
  data.status=await decoded(ENCODED.status,'flags');if(data.status.length!==S*N)throw Error('Status array mismatch');
@@ -97,7 +96,7 @@ async function init(){try{
  let haiyan=STORMS.findIndex(x=>x[0]==='2013306N07162');current=haiyan>=0?haiyan:Math.floor(S/2);options();
  $('search').addEventListener('input',()=>{stop();options()});$('year').addEventListener('change',()=>{stop();options()});$('storm').addEventListener('change',e=>{stop();current=Number(e.target.value);render()});$('metric').addEventListener('change',e=>{metric=e.target.value;render()});$('tracktoggle').addEventListener('change',render);
  $('prev').addEventListener('click',()=>{stop();step(-1)});$('next').addEventListener('click',()=>{stop();step(1)});$('play').addEventListener('click',()=>{if(timer){stop();return}timer=setInterval(()=>step(1),1000);$('play').textContent='❚❚ Pause'});
- $('jump').addEventListener('click',()=>{$('year').value='all';$('search').value='';current=haiyan;stop();options();panreset()});$('download').addEventListener('click',exportCSV);
+ $('jump').addEventListener('click',()=>{$('year').value='all';$('search').value='';current=haiyan;stop();options();panreset()});
  $('zin').addEventListener('click',()=>zoom(1.5));$('zout').addEventListener('click',()=>zoom(1/1.5));$('reset').addEventListener('click',panreset);
  const svg=$('mapSvg');let isDrag=false,prev=null,dist=0;
  svg.addEventListener('pointerdown',e=>{isDrag=true;dist=0;prev=pixelToMap(e.clientX,e.clientY);svg.setPointerCapture(e.pointerId)});
